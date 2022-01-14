@@ -69,7 +69,6 @@ class Homepage extends Component {
     newarray = [...this.state.earningList];
     newarray.splice(currentindex, 1);
 
-    console.log(newarray);
     await this.setState({
       earningList: newarray,
     });
@@ -81,19 +80,24 @@ class Homepage extends Component {
     newarray = [...this.state.deductionList];
     newarray.splice(currentindex, 1);
 
-    console.log(newarray);
     await this.setState({
       deductionList: newarray,
     });
     this.LoadAllcalculations();
-    console.log(currentindex);
   };
 
   earningsValueChangedhandler = async (e, index) => {
     let newSettedObj = [...this.state.earningList];
-    newSettedObj[index].value = e.target.value;
-    newSettedObj[index].warning = false;
-    await this.setState({ earningList: newSettedObj });
+    if (e.target.value.trim() > 0) {
+      newSettedObj[index].value = e.target.value;
+      newSettedObj[index].warning = false;
+      await this.setState({ earningList: newSettedObj });
+    } else {
+      newSettedObj[index].etf = false;
+      newSettedObj[index].value = "";
+      await this.setState({ earningList: newSettedObj });
+    }
+
     this.LoadAllcalculations();
   };
 
@@ -110,6 +114,7 @@ class Homepage extends Component {
         earningList: newSettedObj,
       });
     }
+
     this.LoadAllcalculations();
   };
   deductionValueChangedhandler = async (e, index) => {
@@ -117,7 +122,7 @@ class Homepage extends Component {
     newSettedObj[index].value = e.target.value;
 
     await this.setState({ deductionList: newSettedObj });
-    console.log(newSettedObj);
+
     this.LoadAllcalculations();
   };
 
@@ -143,7 +148,7 @@ class Homepage extends Component {
           onClick={() => this.removeDeductionceAllowanceOnclick(index)}
         >
           <div className="custom-close-icon-conatiner">
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </div>
         </div>
       </div>
@@ -162,7 +167,7 @@ class Homepage extends Component {
             type="number"
             pattern="^[0-9]+(\\.[0-9]+)?$"
             required
-            className={"form-control " + (earning ? "" : "alerterror")}
+            className={"form-control " + (earning.warning ? "alerterror" : "")}
             placeholder="Enter Earnings"
             onChange={e => this.earningsValueChangedhandler(e, index)}
             value={earning.value}
@@ -173,7 +178,7 @@ class Homepage extends Component {
           onClick={() => this.removeAllowanceOnclick(index)}
         >
           <div className="custom-close-icon-conatiner">
-            <i class="fas fa-times"></i>
+            <i className="fas fa-times"></i>
           </div>
         </div>
         <div className="col-md-3 ">
@@ -234,7 +239,7 @@ class Homepage extends Component {
     });
 
     let total = ((sumOfPF + Number(this.state.basicSalary)) * 8) / 100;
-    console.log("total_EightPerecentage:" + sumOfPF);
+
     await this.setState({
       employeeEpfPerecentageEight: total,
     });
@@ -342,8 +347,8 @@ class Homepage extends Component {
 
     return (
       <section className=" py-5 mt-4 ">
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             <div className="col-md-7 pb-2">
               <div className="card   card-body custom-colour-form1 p-4">
                 <div className="row pb-3 align-items-center justify-content-between">
@@ -352,7 +357,7 @@ class Homepage extends Component {
                   </div>
                   <div className="col-md-3 offset-3 custom-reset ">
                     <i
-                      class="fas fa-sync p-1 "
+                      className="fas fa-sync p-1 "
                       onClick={this.restFormHandler}
                     ></i>
                     <span className="p-1">reset</span>
