@@ -8,5 +8,5 @@ Sumudu Lakruwan
 
 ## How to run project
 
-(1) Run "npm install" command to download node modules
-(2)Run"npm start" command to run the frontend
+(1) Run "npm install" command to download node modules<br/>
+(2)Run"npm start" command to run the frontend<br/>
