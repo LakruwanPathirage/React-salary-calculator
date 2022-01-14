@@ -1,0 +1,48 @@
+.custom-reset {
+  cursor: pointer;
+  color: #0052ea;
+}
+
+.custom-colour-form1 {
+  background-color: #fafafa;
+}
+.custom-icon-colour {
+  background: #0052ea;
+}
+
+.custom-colour-addicon {
+  color: #0052ea;
+  cursor: pointer;
+}
+.custom-pointer {
+  cursor: pointer;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-colour-form2 {
+  background: #ffffff;
+}
+.custom-font-size {
+  font-size: 0.8rem;
+}
+.custom-font-size2 {
+  font-size: 0.89rem;
+}
+.alerterror {
+  border-color: red;
+}
+
+.alertnormal {
+  border-color: none;
+}
+.custom-close-icon-conatiner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
