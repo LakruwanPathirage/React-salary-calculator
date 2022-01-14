@@ -355,11 +355,11 @@ class Homepage extends Component {
                   <div className="col-md-6">
                     <h5 className="font-weight-bold">Calculate your salary</h5>
                   </div>
-                  <div className="col-md-3 offset-3 custom-reset ">
-                    <i
-                      className="fas fa-sync p-1 "
-                      onClick={this.restFormHandler}
-                    ></i>
+                  <div
+                    className="col-md-3 offset-3 custom-reset "
+                    onClick={this.restFormHandler}
+                  >
+                    <i className="fas fa-sync p-1 "></i>
                     <span className="p-1">Reset</span>
                   </div>
                 </div>
