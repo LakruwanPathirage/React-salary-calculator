@@ -360,7 +360,7 @@ class Homepage extends Component {
                       className="fas fa-sync p-1 "
                       onClick={this.restFormHandler}
                     ></i>
-                    <span className="p-1">reset</span>
+                    <span className="p-1">Reset</span>
                   </div>
                 </div>
                 <form>
