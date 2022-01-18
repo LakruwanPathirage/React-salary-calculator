@@ -198,7 +198,7 @@ class Homepage extends Component {
   }
 
   calculateGrossEarning = async () => {
-    let { grossEarning } = this.calculations(
+    let { grossEarning } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -218,7 +218,7 @@ class Homepage extends Component {
     this.calculateCTC();
   }
   calculateGrossDeduction = async () => {
-    let { grossDeduction } = this.calculations(
+    let { grossDeduction } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -229,7 +229,7 @@ class Homepage extends Component {
     });
   };
   calculateEmployeeEpfEightPerecentage = async () => {
-    let { employeeEpfPerecentageEight } = this.calculations(
+    let { employeeEpfPerecentageEight } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -241,7 +241,7 @@ class Homepage extends Component {
   };
 
   calculateEmployeeEPFTwelvePerecentage = async () => {
-    let { employeeEPFPerecentageTwelve } = this.calculations(
+    let { employeeEPFPerecentageTwelve } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -252,7 +252,7 @@ class Homepage extends Component {
     });
   };
   calculateEmployeeETFThreePerecentag = async () => {
-    let { employeeETFFPerecentageThree } = this.calculations(
+    let { employeeETFFPerecentageThree } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -263,7 +263,7 @@ class Homepage extends Component {
     });
   };
   calculateNetSalary = async () => {
-    let { netSalary } = this.calculations(
+    let { netSalary } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
@@ -275,7 +275,7 @@ class Homepage extends Component {
   };
 
   calculateCTC = async () => {
-    let { CTC } = this.calculations(
+    let { CTC } = calculatetions(
       this.earningList,
       this.basicSalary,
       this.deductionList
