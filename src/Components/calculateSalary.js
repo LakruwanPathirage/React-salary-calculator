@@ -96,7 +96,7 @@ export const calculatetions = (earninglist, basicsalary, deductionlist) => {
   const CTC = calculateCTC(
     grossEarning,
     grossDeduction,
-    customCalculationOnPerecentage,
+    employeeEPFPerecentageTwelve,
     employeeETFFPerecentageThree
   );
   const netSalary = calculateNetSalary(
