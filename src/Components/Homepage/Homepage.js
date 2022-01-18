@@ -199,9 +199,9 @@ class Homepage extends Component {
 
   calculateGrossEarning = async () => {
     let { grossEarning } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -219,9 +219,9 @@ class Homepage extends Component {
   }
   calculateGrossDeduction = async () => {
     let { grossDeduction } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -230,9 +230,9 @@ class Homepage extends Component {
   };
   calculateEmployeeEpfEightPerecentage = async () => {
     let { employeeEpfPerecentageEight } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -242,9 +242,9 @@ class Homepage extends Component {
 
   calculateEmployeeEPFTwelvePerecentage = async () => {
     let { employeeEPFPerecentageTwelve } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -253,9 +253,9 @@ class Homepage extends Component {
   };
   calculateEmployeeETFThreePerecentag = async () => {
     let { employeeETFFPerecentageThree } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -264,9 +264,9 @@ class Homepage extends Component {
   };
   calculateNetSalary = async () => {
     let { netSalary } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({
@@ -276,9 +276,9 @@ class Homepage extends Component {
 
   calculateCTC = async () => {
     let { CTC } = calculatetions(
-      this.earningList,
-      this.basicSalary,
-      this.deductionList
+      this.state.earningList,
+      this.state.basicSalary,
+      this.state.deductionList
     );
 
     await this.setState({

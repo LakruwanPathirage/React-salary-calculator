@@ -74,7 +74,9 @@ const calculateNetSalary = (
 };
 
 export const calculatetions = (earninglist, basicsalary, deductionlist) => {
+  console.log("earninh list " + earninglist);
   const grossEarning = calculateGrossEarning(earninglist, basicsalary);
+  console.log("uuuu");
   const grossDeduction = calculateGrossDeduction(deductionlist);
   const employeeEpfPerecentageEight = customCalculationOnPerecentage(
     earninglist,
