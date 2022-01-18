@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
+import { calculatetions } from "../calculateSalary";
 class Homepage extends Component {
   state = {
     basicSalary: "",
@@ -196,16 +197,15 @@ class Homepage extends Component {
     ));
   }
 
-  calculateGrossEarning = () => {
-    let totalGrossEarning = 0;
-    let totalEarnings = 0;
-    this.state.earningList.map(item => {
-      totalEarnings = totalEarnings + Number(item.value);
-      return item;
-    });
-    totalGrossEarning = Number(this.state.basicSalary) + totalEarnings;
-    this.setState({
-      grossEarning: totalGrossEarning,
+  calculateGrossEarning = async () => {
+    let { grossEarning } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
+
+    await this.setState({
+      grossEarning: grossEarning,
     });
   };
   LoadAllcalculations() {
@@ -218,94 +218,71 @@ class Homepage extends Component {
     this.calculateCTC();
   }
   calculateGrossDeduction = async () => {
-    let totalGrossDeduction = 0;
+    let { grossDeduction } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
-    this.state.deductionList.map(item => {
-      totalGrossDeduction = totalGrossDeduction + Number(item.value);
-      return item;
-    });
     await this.setState({
-      grossDeduction: totalGrossDeduction,
+      grossDeduction: grossDeduction,
     });
   };
   calculateEmployeeEpfEightPerecentage = async () => {
-    let sumOfPF = 0;
-
-    this.state.earningList.map(item => {
-      if (item.etf) {
-        sumOfPF = sumOfPF + Number(item.value);
-      }
-      return item;
-    });
-
-    let total = ((sumOfPF + Number(this.state.basicSalary)) * 8) / 100;
+    let { employeeEpfPerecentageEight } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
     await this.setState({
-      employeeEpfPerecentageEight: total,
+      employeeEpfPerecentageEight: employeeEpfPerecentageEight,
     });
   };
 
   calculateEmployeeEPFTwelvePerecentage = async () => {
-    let sumOfPF = 0;
+    let { employeeEPFPerecentageTwelve } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
-    this.state.earningList.map(item => {
-      if (item.etf) {
-        sumOfPF = sumOfPF + Number(item.value);
-      }
-      return item;
-    });
-
-    let total = ((sumOfPF + Number(this.state.basicSalary)) * 12) / 100;
     await this.setState({
-      employeeEPFPerecentageTwelve: total,
+      employeeEPFPerecentageTwelve: employeeEPFPerecentageTwelve,
     });
   };
   calculateEmployeeETFThreePerecentag = async () => {
-    let sumOfPF = 0;
+    let { employeeETFFPerecentageThree } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
-    this.state.earningList.map(item => {
-      if (item.etf) {
-        sumOfPF = sumOfPF + Number(item.value);
-      }
-      return item;
-    });
-
-    let total = ((sumOfPF + Number(this.state.basicSalary)) * 3) / 100;
     await this.setState({
-      employeeETFFPerecentageThree: total,
+      employeeETFFPerecentageThree: employeeETFFPerecentageThree,
     });
   };
   calculateNetSalary = async () => {
-    let grossSalaryCalc = this.state.grossEarning;
-    let grossDeductionCalc = this.state.grossDeduction;
-    let employeeEpfPerecentageEightCalc =
-      this.state.employeeEpfPerecentageEight;
-    let total =
-      Number(grossSalaryCalc) -
-      (Number(grossDeductionCalc) + Number(employeeEpfPerecentageEightCalc));
+    let { netSalary } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
     await this.setState({
-      netSalary: total,
+      netSalary: netSalary,
     });
   };
 
   calculateCTC = async () => {
-    let grossSalaryCalc = this.state.grossEarning;
-    let grossDeductionCalc = this.state.grossDeduction;
-    let employeeEpfPerecentageTwelveCalc =
-      this.state.employeeEPFPerecentageTwelve;
-    let employeeETFFPerecentageThreeCalc =
-      this.state.employeeETFFPerecentageThree;
-
-    let GrossSalGrossDedu =
-      Number(grossSalaryCalc) - Number(grossDeductionCalc);
-    let total =
-      Number(GrossSalGrossDedu) +
-      (Number(employeeETFFPerecentageThreeCalc) +
-        Number(employeeEpfPerecentageTwelveCalc));
+    let { CTC } = this.calculations(
+      this.earningList,
+      this.basicSalary,
+      this.deductionList
+    );
 
     await this.setState({
-      CTC: total,
+      CTC: CTC,
     });
   };
   restFormHandler = async () => {
